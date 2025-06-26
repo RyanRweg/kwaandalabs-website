@@ -1,466 +1,320 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kwaanda Labs - Empowering Africa Through Innovation</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  
-  <!-- AOS Animate on Scroll -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-  
-  <!-- FontAwesome for social icons -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kwaanda Labs – Modern STEM Innovation</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a2c5c5e6e4.js" crossorigin="anonymous"></script>
-  
+
+  <!-- AOS Scroll Animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
   <style>
-    /* Reset */
+    :root {
+      --blue: #0066ff;
+      --blue-light: rgba(0, 102, 255, 0.2);
+      --grey-bg: #f6f9fc;
+    }
     *, *::before, *::after {
       box-sizing: border-box;
+      margin: 0; padding: 0;
     }
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
+      color: #222;
       background: #fff;
-      color: #111;
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    
+    a { text-decoration: none; color: inherit; }
+
     /* Navbar */
-    header.navbar {
+    .navbar {
       position: sticky;
       top: 0;
       background: #fff;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 101;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .navbar img { height: 45px; }
+    .navbar nav { display: flex; gap: 1.5rem; }
+    .navbar nav a:hover { color: var(--blue); }
+    .socials a { margin-left: 1rem; font-size: 1.3rem; color: var(--blue); }
+    .socials a:hover { color: #0047cc; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 80vh;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      user-select: none;
-    }
-    header.navbar img.logo {
-      height: 50px;
-      user-select: none;
-    }
-    nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav a {
-      font-weight: 600;
-      font-size: 1rem;
-      color: #333;
-      transition: color 0.3s ease;
-    }
-    nav a:hover,
-    nav a:focus {
-      color: #0066ff;
-      outline: none;
-    }
-    .socials a {
-      margin-left: 1rem;
-      font-size: 1.25rem;
-      color: #0066ff;
-      transition: color 0.3s ease;
-    }
-    .socials a:hover,
-    .socials a:focus {
-      color: #0047cc;
-      outline: none;
-    }
-    
-    /* Hero */
-    section.hero {
-      position: relative;
-      background: #f6f9fc;
-      text-align: center;
-      padding: 6rem 2rem 8rem;
+      justify-content: center;
+      background: var(--grey-bg);
       overflow: hidden;
     }
-    #hero-canvas {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+    canvas#heroCanvas {
+      position: absolute; top:0; left:0;
+      width: 100%; height:100%;
       z-index: 0;
     }
     .hero-content {
       position: relative;
+      z-index: 2;
       max-width: 700px;
-      margin: 0 auto;
-      z-index: 1;
+      padding: 0 1rem;
+      text-align: center;
     }
     .hero-content h1 {
-      font-size: 3.2rem;
-      font-weight: 800;
-      color: #0066ff;
-      margin-bottom: 1rem;
-      line-height: 1.1;
+      font-size: 3rem; color: var(--blue); line-height: 1.1;
     }
     .hero-content p {
-      font-size: 1.25rem;
-      color: #222;
-      margin-bottom: 2.5rem;
-      font-weight: 500;
+      margin: 1rem 0 2rem;
+      font-size: 1.2rem;
+      color: #333;
     }
     .btn-primary {
-      display: inline-block;
-      background: #0066ff;
+      background: var(--blue);
       color: #fff;
-      padding: 0.85rem 2.25rem;
-      font-weight: 700;
-      border-radius: 6px;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.3s ease;
+      padding: .85rem 2rem;
       font-size: 1.1rem;
-      box-shadow: 0 4px 8px rgba(0,102,255,0.3);
+      font-weight: 600;
       border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px var(--blue-light);
+      cursor: pointer;
+      transition: transform .3s ease, box-shadow .3s;
     }
-    .btn-primary:hover,
-    .btn-primary:focus {
-      background: #0047cc;
-      outline: none;
-      box-shadow: 0 6px 12px rgba(0,71,204,0.4);
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px var(--blue-light);
     }
-    
-    /* Features Section */
-    section.features {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
+
+    /* Floating Blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--blue-light);
+      pointer-events: none;
+      opacity: 0.7;
+      will-change: transform;
+      animation: blobMove 15s infinite;
+    }
+    .blob:nth-child(1) { width: 250px; height:250px; top:10%; left:15%; animation-delay:0s; }
+    .blob:nth-child(2) { width: 180px; height:180px; top:60%; left:70%; animation-delay:5s; }
+    @keyframes blobMove {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(50px, -30px) scale(1.2); }
+    }
+
+    /* Sections */
+    section { padding: 4rem 1rem; }
+    .features, .projects {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      max-width: 1080px;
+      margin: auto;
+    }
+
+    .card {
+      position: relative;
       background: #fff;
-    }
-    .feature-card {
-      background: #f2f4f7;
-      border-radius: 10px;
-      padding: 2rem 1.5rem;
-      flex: 1 1 300px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.07);
+      width: 300px;
       text-align: center;
-      transition: box-shadow 0.3s ease;
-      user-select: none;
+      transform: perspective(600px) rotateY(0deg);
+      transition: transform .45s ease, box-shadow .45s ease;
+      cursor: pointer;
     }
-    .feature-card:hover,
-    .feature-card:focus-within {
-      box-shadow: 0 8px 25px rgba(0,102,255,0.2);
-      outline: none;
+    .card img { width: 80px; height: 80px; margin-bottom: 1rem; }
+    .card h3 { color: var(--blue); margin-bottom:.8rem; }
+    .card p { color: #555; font-size:1rem; }
+    .card:hover {
+      transform: perspective(600px) rotateY(10deg) translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     }
-    .feature-card img {
-      max-width: 80px;
-      margin-bottom: 1.25rem;
-      user-select: none;
-    }
-    .feature-card h3 {
-      color: #0066ff;
-      margin-bottom: 0.75rem;
+
+    .section-title {
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 3rem;
       font-weight: 700;
-      font-size: 1.4rem;
+      color: var(--blue);
     }
-    .feature-card p {
-      font-size: 1rem;
-      color: #444;
-      font-weight: 500;
-      line-height: 1.4;
+
+    /* Instagram Embed */
+    .instagram-wrap {
+      max-width:600px;
+      margin: auto;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
     }
-    
-    /* Projects Section */
-    section.projects {
-      max-width: 1080px;
-      margin: 4rem auto;
-      padding: 0 1.5rem 4rem;
-      text-align: center;
-      background: #f9fafb;
-      user-select: none;
-    }
-    section.projects h2 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: #0066ff;
-      margin-bottom: 2.5rem;
-    }
-    .logo-row {
-      display: flex;
-      justify-content: center;
-      gap: 3.5rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .logo-row img {
-      max-height: 65px;
-      filter: grayscale(60%);
-      transition: filter 0.3s ease;
-      user-select: none;
-    }
-    .logo-row img:hover,
-    .logo-row img:focus {
-      filter: grayscale(0%);
-      outline: none;
-    }
-    
-    /* Instagram Section */
-    section.instagram {
-      max-width: 1080px;
-      margin: 0 auto 4rem;
-      padding: 0 1.5rem;
-      text-align: center;
-      user-select: none;
-    }
-    section.instagram h2 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: #0066ff;
-      margin-bottom: 2rem;
-    }
-    .insta-embed iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 520px;
-      border: none;
-      border-radius: 10px;
-    }
-    
-    /* Contact Section */
-    section.contact {
-      max-width: 500px;
-      margin: 0 auto 6rem;
-      padding: 0 1.5rem;
-      text-align: center;
-      user-select: none;
-    }
-    section.contact h2 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #0066ff;
-      margin-bottom: 2rem;
-    }
-    form {
+
+    /* Contact */
+    .contact form {
+      max-width:500px;
+      margin: auto;
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
-    input, textarea {
-      font-size: 1rem;
-      padding: 0.9rem 1.1rem;
-      border-radius: 6px;
-      border: 1.5px solid #ccc;
-      resize: vertical;
-      transition: border-color 0.3s ease;
-      font-family: 'Inter', sans-serif;
+    .contact input, .contact textarea {
+      padding:1rem; border: 2px solid #ddd; border-radius:8px;
+      font-size:1rem; transition:border-color .3s;
     }
-    input:focus, textarea:focus {
-      border-color: #0066ff;
+    .contact input:focus, .contact textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 8px var(--blue-light);
       outline: none;
-      box-shadow: 0 0 6px rgba(0,102,255,0.3);
     }
-    button[type="submit"] {
-      margin-top: 0.75rem;
-    }
-    
+
     /* Footer */
     footer {
-      background: #f2f2f2;
-      padding: 2rem 1.5rem;
+      background: var(--grey-bg);
       text-align: center;
-      color: #444;
-      user-select: none;
+      padding: 2rem;
     }
-    footer p {
-      margin: 0 0 1rem 0;
-      font-size: 0.95rem;
-      font-weight: 500;
+    footer .socials a {
+      margin:0 .5rem;
+      color:var(--blue);
+      font-size:1.4rem;
     }
-    .footer-socials a {
-      color: #0066ff;
-      margin: 0 0.6rem;
-      font-size: 1.4rem;
-      transition: color 0.3s ease;
+
+    /* Mobile */
+    @media(max-width:768px){
+      .hero-content h1 { font-size:2.4rem; }
+      .hero-content p { font-size:1.1rem; }
+      .btn-primary { padding:.7rem 1.6rem; }
+      .card { width: 100%; max-width: 320px;}
     }
-    .footer-socials a:hover,
-    .footer-socials a:focus {
-      color: #0047cc;
-      outline: none;
-    }
-    
-    /* Responsive */
-    @media (max-width: 920px) {
-      nav {
-        gap: 1rem;
-      }
-      .feature-card {
-        flex: 1 1 100%;
-      }
-      .logo-row {
-        gap: 2rem;
-      }
-    }
-    
-    @media (max-width: 420px) {
-      .hero-content h1 {
-        font-size: 2.4rem;
-      }
-      .hero-content p {
-        font-size: 1.1rem;
-      }
-      .btn-primary {
-        font-size: 1rem;
-        padding: 0.7rem 1.6rem;
-      }
-    }
+
   </style>
 </head>
 <body>
 
-<header class="navbar" role="banner">
-  <a href="#hero" aria-label="Go to top">
-    <img src="https://kwaandalabs.com/wp-content/uploads/2022/06/Kwaanda-logo.png" alt="Kwaanda Labs Logo" class="logo" />
-  </a>
-  <nav role="navigation" aria-label="Primary navigation">
-    <a href="#about">About</a>
+<header class="navbar">
+  <a href="#"><img src="assets/logo.png" alt="Kwaanda Labs Logo"></a>
+  <nav>
     <a href="#services">Services</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
-  <div class="socials" aria-label="Social media links">
-    <a href="https://www.instagram.com/kwaandalabsltd/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-    <a href="https://www.linkedin.com/company/kwaandalabs/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+  <div class="socials">
+    <a href="https://instagram.com/kwaandalabsltd" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://linkedin.com/company/kwaandalabs" target="_blank"><i class="fab fa-linkedin"></i></a>
   </div>
 </header>
 
-<main>
+<section class="hero" id="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Empowering Africa Through Innovation</h1>
+    <p>Transforming STEM education with modern labs, tools & training</p>
+    <button class="btn-primary">Start a Project</button>
+  </div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+</section>
 
-  <section class="hero" id="hero" role="region" aria-label="Hero section">
-    <canvas id="hero-canvas" aria-hidden="true"></canvas>
-    <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
-      <h1>Empowering Africa Through Innovation</h1>
-      <p>Tech-driven STEM labs, tools, and training for the next generation.</p>
-      <a href="#contact" class="btn-primary" role="button">Start a Project</a>
-    </div>
-  </section>
+<section id="services">
+  <h2 class="section-title" data-aos="fade-down">What We Do</h2>
+  <div class="features">
+    <div class="card" data-aos="fade-up" data-aos-delay="100"><img src="assets/microscope.png"><h3>Microscope Rentals</h3><p>High-precision tools for hands-on learning.</p></div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200"><img src="assets/training.png"><h3>Hands-On Training</h3><p>Practical, applied science experiences.</p></div>
+    <div class="card" data-aos="fade-up" data-aos-delay="300"><img src="assets/lab.png"><h3>STEM Lab Setup</h3><p>Turnkey labs built for institutions.</p></div>
+  </div>
+</section>
 
-  <section class="features" id="services" role="region" aria-label="Our services">
-    <div class="feature-card" data-aos="fade-up" data-aos-delay="100" tabindex="0">
-      <img src="https://kwaandalabs.com/wp-content/uploads/2022/06/microscope-icon.png" alt="Microscope Icon" loading="lazy" />
-      <h3>Microscope Rentals</h3>
-      <p>Access affordable lab tools across Africa with ease.</p>
-    </div>
-    <div class="feature-card" data-aos="fade-up" data-aos-delay="200" tabindex="0">
-      <img src="https://kwaandalabs.com/wp-content/uploads/2022/06/training-icon.png" alt="Training Icon" loading="lazy" />
-      <h3>Hands-On Training</h3>
-      <p>Learn by doing — real-world projects and guided experiments.</p>
-    </div>
-    <div class="feature-card" data-aos="fade-up" data-aos-delay="300" tabindex="0">
-      <img src="https://kwaandalabs.com/wp-content/uploads/2022/06/lab-icon.png" alt="Lab Setup Icon" loading="lazy" />
-      <h3>STEM Lab Setup</h3>
-      <p>Modern lab installations built for schools and communities.</p>
-    </div>
-  </section>
+<section id="projects">
+  <h2 class="section-title" data-aos="fade-down">Our Impact</h2>
+  <div class="projects">
+    <div class="card" data-aos="zoom-in"><img src="assets/client1.png"><h3>School X</h3><p>Equipped labs for 300+ students.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="100"><img src="assets/client2.png"><h3>Institution Y</h3><p>Nationwide STEM rollout.</p></div>
+    <div class="card" data-aos="zoom-in" data-aos-delay="200"><img src="assets/client3.png"><h3>University Z</h3><p>Advanced equipment & training.</p></div>
+  </div>
+</section>
 
-  <section class="projects" id="projects" role="region" aria-label="Our partners and clients" data-aos="fade-up">
-    <h2>Our Impact</h2>
-    <div class="logo-row" aria-live="polite" aria-atomic="true">
-      <img src="https://kwaandalabs.com/wp-content/uploads/2022/06/client-logo1.png" alt="Client Logo 1" loading="lazy" />
-      <img src="https://kwaandalabs.com/wp-content/uploads/2022/06/client-logo2.png" alt="Client Logo 2" loading="lazy" />
-      <img src="https://kwaandalabs.com/wp-content/uploads/2022/06/client-logo3.png" alt="Client Logo 3" loading="lazy" />
-    </div>
-  </section>
+<section id="instagram">
+  <h2 class="section-title" data-aos="fade-down">On the Ground</h2>
+  <div class="instagram-wrap" data-aos="fade-up">
+    <iframe src="https://www.instagram.com/p/CXXXXXXXXXX/embed" frameborder="0" allowfullscreen></iframe>
+  </div>
+</section>
 
-  <section class="instagram" role="region" aria-label="Kwaanda Labs Instagram feed" data-aos="fade-up">
-    <h2>On the Ground</h2>
-    <div class="insta-embed" aria-live="polite" aria-atomic="true">
-      <iframe src="https://www.instagram.com/kwaandalabsltd/embed" scrolling="no" allowtransparency="true" frameborder="0" title="Kwaanda Labs Instagram Feed"></iframe>
-    </div>
-  </section>
+<section id="contact">
+  <h2 class="section-title" data-aos="fade-down">Get in Touch</h2>
+  <form data-aos="fade-up" action="https://formspree.io/f/yourFormID" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button class="btn-primary">Send Message</button>
+  </form>
+</section>
 
-  <section class="contact" id="contact" role="region" aria-label="Contact Kwaanda Labs" data-aos="fade-up">
-    <h2>Let's Work Together</h2>
-    <form action="https://formspree.io/f/{your-form-id}" method="POST" aria-label="Contact form">
-      <input type="text" name="name" placeholder="Your name" required aria-required="true" />
-      <input type="email" name="email" placeholder="Your email" required aria-required="true" />
-      <textarea name="message" rows="5" placeholder="Your message" required aria-required="true"></textarea>
-      <button type="submit" class="btn-primary">Send Message</button>
-    </form>
-  </section>
-
-</main>
-
-<footer role="contentinfo" data-aos="fade-up">
-  <p>© Kwaanda Labs 2025. All rights reserved.</p>
-  <div class="footer-socials" aria-label="Social media links">
-    <a href="https://www.instagram.com/kwaandalabsltd/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-    <a href="https://www.linkedin.com/company/kwaandalabs/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+<footer>
+  <p>© 2025 Kwaanda Labs. All rights reserved.</p>
+  <div class="socials">
+    <a href="https://instagram.com/kwaandalabsltd"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="https://linkedin.com/company/kwaandalabs"><i class="fab fa-linkedin"></i></a>
   </div>
 </footer>
 
-<!-- Scripts -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-  AOS.init({ once: true });
+  AOS.init({ once:true, easing:'ease-out', duration:800 });
 
-  // Canvas background animation (floating circles)
-  const canvas = document.getElementById('hero-canvas');
+  // Hero floating particles canvas
+  const canvas = document.getElementById('heroCanvas');
   const ctx = canvas.getContext('2d');
+  let w, h, particles = [];
 
-  function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+  function initParticles(){
+    w = canvas.width = canvas.clientWidth;
+    h = canvas.height = canvas.clientHeight;
+    particles = Array.from({length: 100}, _=>{
+      return {
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: Math.random()*2 + 1,
+        dx: (Math.random()-0.5)*0.4,
+        dy: (Math.random()-0.5)*0.4,
+        alpha: Math.random()*0.5 + 0.1
+      }
+    });
   }
-  resizeCanvas();
 
-  class Circle {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.radius = Math.random() * 2 + 1;
-      this.opacity = Math.random() * 0.5 + 0.1;
-      this.dx = (Math.random() - 0.5) * 0.2;
-      this.dy = (Math.random() - 0.5) * 0.2;
-    }
-    draw() {
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 102, 255, ${this.opacity})`;
+      ctx.arc(p.x,p.y,p.r,0,2*Math.PI);
+      ctx.fillStyle = `rgba(0,102,255,${p.alpha})`;
       ctx.fill();
-    }
-    update() {
-      this.x += this.dx;
-      this.y += this.dy;
-      if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
-      this.draw();
-    }
+      p.x += p.dx;
+      p.y += p.dy;
+      if(p.x<0||p.x>w) p.dx *= -1;
+      if(p.y<0||p.y>h) p.dy *= -1;
+    });
+    requestAnimationFrame(draw);
   }
 
-  let circles = [];
-  function init() {
-    circles = [];
-    for (let i = 0; i < 100; i++) circles.push(new Circle());
-  }
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    circles.forEach(c => c.update());
-    requestAnimationFrame(animate);
-  }
-  window.addEventListener('resize', () => {
-    resizeCanvas();
-    init();
-  });
-
-  init();
-  animate();
+  window.addEventListener('resize', initParticles);
+  initParticles(); draw();
 </script>
 
 </body>
